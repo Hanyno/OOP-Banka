@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-	/*
+	/* nesnasim github :)
 	Account* a;
 	PartnerAccount* pa;
 
