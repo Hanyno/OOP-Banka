@@ -2,24 +2,13 @@
 
 Account::Account(int n, Client* c)
 {
-	Account(n, c, nullptr, 0.05);
+	Account(n, c, 0.05);
 }
 
 Account::Account(int n, Client* c, double ir)
 {
-	Account(n, c, nullptr, ir);
-}
-
-Account::Account(int n, Client* c, Client* p)
-{
-	Account(n, c, p, 0.05);
-}
-
-Account::Account(int n, Client* c, Client* p, double ir)
-{
 	this->number = n;
 	this->owner = c;
-	this->partner = p;
 	this->interestRate = ir;
 	this->balance = 0;
 }
@@ -44,17 +33,9 @@ Client* Account::GetOwner()
 	return this->owner;
 }
 
-Client* Account::GetPartner()
-{
-	return this->partner;
-}
-
 bool Account::CanWithdraw(double a)
 {
-	if (a <= this->balance)
-		return true;
-
-	return false;
+	return (this->balance >= a);
 }
 
 void Account::Deposit(double a)
@@ -62,10 +43,15 @@ void Account::Deposit(double a)
 	this->balance += a;
 }
 
-void Account::Withdraw(double a)
+bool Account::Withdraw(double a)
 {
-	if (CanWithdraw(a))
+	bool succes = false;
+	if (this->CanWithdraw(a))
+	{
 		this->balance -= a;
+		succes = true;
+	}
+	return succes;
 }
 
 void Account::AddInterest()

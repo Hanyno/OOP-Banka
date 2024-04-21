@@ -1,4 +1,8 @@
 #include "Bank.h"
+#include "Account.h"
+#include "Client.h"
+#include "PartnerAccount.h"
+#include "CreditAccount.h"
 
 #include <iostream>
 
@@ -71,17 +75,17 @@ Account* Bank::CreateAccount(int n, Client* c, double ir)
 	return CreateAccount(n, c, nullptr, ir);
 }
 
-Account* Bank::CreateAccount(int n, Client* c, Client* p)
+PartnerAccount* Bank::CreateAccount(int n, Client* c, Client* p)
 {
 	return CreateAccount(n, c, p, 0.05);
 }
 
-Account* Bank::CreateAccount(int n, Client* c, Client* p, double ir)
+PartnerAccount* Bank::CreateAccount(int n, Client* c, Client* p, double ir)
 {
 	if (this->accountsCount > this->maxAccounts)
 		return nullptr;
 
-	Account* newAccount = new Account(n, c, p, ir);
+	PartnerAccount* newAccount = new PartnerAccount(n, c, p, ir);
 
 	this->accounts[this->accountsCount] = newAccount;
 	this->accountsCount++;
@@ -113,13 +117,10 @@ void Bank::Print()
 		cout << "Balance: " << this->accounts[i]->GetBalance() << endl;
 		cout << "Interest rate: " << this->accounts[i]->GetInterestRate() << endl;
 		cout << "Owner: " << this->accounts[i]->GetOwner()->GetName() << endl;
-		if (this->accounts[i]->GetPartner() != nullptr)
-			cout << "Partner: " << this->accounts[i]->GetPartner()->GetName() << endl;
-		else
-			cout << "Partner: No Partner" << endl;
 		cout << endl;
 	}
 }
+
 
 int Bank::GetAccountsCount()
 {
