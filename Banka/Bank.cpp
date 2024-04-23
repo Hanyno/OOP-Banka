@@ -6,6 +6,8 @@
 
 #include <iostream>
 
+double Bank::ir = 0.05;
+
 Bank::Bank(int c, int a)
 {
 	this->maxClients = c;
@@ -125,4 +127,16 @@ void Bank::Print()
 int Bank::GetAccountsCount()
 {
 	return this->accountsCount;
+}
+
+void Bank::ModifyIr(int new_ir)
+{
+	for (int i = 0; i < this->GetAccountsCount(); i++)
+	{
+		if (this->GetAccount(i)->GetInterestRate() == this->ir)
+		{
+			this->GetAccount(i)->SetInterestRate(new_ir);
+		}
+	}
+	this->ir = new_ir;
 }

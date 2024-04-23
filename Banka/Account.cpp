@@ -1,5 +1,9 @@
 #include "Account.h"
 
+#include <iostream>
+
+int Account::objectCount = 0;
+
 Account::Account(int n, Client* c)
 {
 	Account(n, c, 0.05);
@@ -11,6 +15,14 @@ Account::Account(int n, Client* c, double ir)
 	this->owner = c;
 	this->interestRate = ir;
 	this->balance = 0;
+	cout << "Kontruktor Acc zavolán" << endl;
+	objectCount++;
+}
+
+Account::~Account()
+{
+	cout << "¨Destruktor Acc zavolán" << endl;
+	objectCount--;
 }
 
 int Account::GetNumber()
@@ -57,4 +69,14 @@ bool Account::Withdraw(double a)
 void Account::AddInterest()
 {
 	this->balance += this->interestRate * this->balance;
+}
+
+int Account::GetNumOfObj()
+{
+	return this->objectCount;
+}
+
+void Account::SetInterestRate(double ir)
+{
+	this->interestRate = ir;
 }

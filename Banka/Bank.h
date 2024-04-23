@@ -17,6 +17,8 @@ private:
 	int accountsCount;
 	int maxAccounts;
 
+	static double ir;
+
 public:
 	Bank(int c, int a);
 	~Bank();
@@ -34,5 +36,6 @@ public:
 	void Print();
 
 	int GetAccountsCount();
+	void ModifyIr(int ir);
 };
 

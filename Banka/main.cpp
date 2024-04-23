@@ -10,7 +10,6 @@ using namespace std;
 
 int main()
 {
-	/* nesnasim github :) lol
 	Account* a;
 	PartnerAccount* pa;
 
@@ -24,20 +23,8 @@ int main()
 	cout << pa->GetPartner()->GetName() << endl;
 
 	cout << b->GetClient(1)->GetName() << endl;
-	
-	*//**/
-	Client* o = new Client(0, "Smith");
 
-	CreditAccount* ca = new CreditAccount(1, o, 1000);
-	cout << ca->CanWithdraw(1000) << endl;
-
-	Account* a = ca;
-	cout << a->CanWithdraw(1000) << endl;
-
-	cout << ca->Withdraw(1000) << endl;
-
-	a = nullptr;
-	delete ca;
+	cout << o->GetObjectCount() << endl;
 	
 	return 0;
 }
