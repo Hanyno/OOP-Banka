@@ -115,11 +115,7 @@ void Bank::Print()
 	cout << "Accounts:" << endl;
 	for (int i = 0; i < this->accountsCount; i++)
 	{
-		cout << "Number: " << this->accounts[i]->GetNumber() << endl;
-		cout << "Balance: " << this->accounts[i]->GetBalance() << endl;
-		cout << "Interest rate: " << this->accounts[i]->GetInterestRate() << endl;
-		cout << "Owner: " << this->accounts[i]->GetOwner()->GetName() << endl;
-		cout << endl;
+		this->accounts[i]->Print();
 	}
 }
 

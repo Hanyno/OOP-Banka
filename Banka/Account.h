@@ -23,12 +23,14 @@ public:
 	double GetBalance();
 	double GetInterestRate();
 	Client* GetOwner();
-	bool CanWithdraw(double a);
+	virtual bool CanWithdraw(double a);
 	void SetInterestRate(double ir);
 
 	void Deposit(double a);
 	bool Withdraw(double a);
 	void AddInterest();
+
+	void Print();
 
 	int GetNumOfObj();
 };

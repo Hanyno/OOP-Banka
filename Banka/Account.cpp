@@ -15,14 +15,14 @@ Account::Account(int n, Client* c, double ir)
 	this->owner = c;
 	this->interestRate = ir;
 	this->balance = 0;
-	cout << "Kontruktor Acc zavolán" << endl;
-	objectCount++;
+	cout << "Kontruktor Acc zavolan" << endl;
+	this->objectCount++;
 }
 
 Account::~Account()
 {
-	cout << "¨Destruktor Acc zavolán" << endl;
-	objectCount--;
+	cout << "Destruktor Acc zavolan" << endl;
+	this->objectCount--;
 }
 
 int Account::GetNumber()
@@ -79,4 +79,14 @@ int Account::GetNumOfObj()
 void Account::SetInterestRate(double ir)
 {
 	this->interestRate = ir;
+}
+
+void Account::Print()
+{
+	cout << "Number: " << this->GetNumber() << endl;
+	cout << "Balance: " << this->GetBalance() << endl;
+	cout << "Interest rate: " << this->GetInterestRate() << endl;
+	cout << "Owner: " << this->GetOwner()->GetName() << endl;
+	cout << "Account type: Account" << endl;
+	cout << endl;
 }

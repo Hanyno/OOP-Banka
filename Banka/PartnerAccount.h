@@ -10,6 +10,9 @@ private:
 public:
 	PartnerAccount(int n, Client* o, Client* p);
 	PartnerAccount(int n, Client* o, Client* p, double ir);
+	~PartnerAccount();
 
 	Client* GetPartner();
+
+	void Print();
 };
