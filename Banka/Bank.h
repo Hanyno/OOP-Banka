@@ -19,6 +19,7 @@ private:
 
 	static double ir;
 
+
 public:
 	Bank(int c, int a);
 	~Bank();
@@ -31,11 +32,11 @@ public:
 	Account* CreateAccount(int n, Client* c, double ir);
 	PartnerAccount* CreateAccount(int n, Client* c, Client* p);
 	PartnerAccount* CreateAccount(int n, Client* c, Client* p, double ir);
+	CreditAccount* CreateAccount(int n, Client* c, double ir, double credit);
 
 	void AddInterest();
 	void Print();
 
-	int GetAccountsCount();
-	void ModifyIr(int ir);
+	void ModifyIr(double ir);
 };
 

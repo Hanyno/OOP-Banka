@@ -19,8 +19,11 @@ Account::Account(int n, Client* c, double ir)
 	this->objectCount++;
 }
 
+
+
 Account::~Account()
 {
+	delete this->owner;
 	cout << "Destruktor Acc zavolan" << endl;
 	this->objectCount--;
 }
@@ -87,6 +90,5 @@ void Account::Print()
 	cout << "Balance: " << this->GetBalance() << endl;
 	cout << "Interest rate: " << this->GetInterestRate() << endl;
 	cout << "Owner: " << this->GetOwner()->GetName() << endl;
-	cout << "Account type: Account" << endl;
 	cout << endl;
 }

@@ -6,12 +6,10 @@ class Account
 {
 private:
 	static int objectCount;
+protected:
 	int number;
 	double interestRate;
-
 	Client* owner;
-
-protected:
 	double balance;
 
 public:
@@ -22,15 +20,15 @@ public:
 	int GetNumber();
 	double GetBalance();
 	double GetInterestRate();
+	void SetInterestRate(double ir);
 	Client* GetOwner();
 	virtual bool CanWithdraw(double a);
-	void SetInterestRate(double ir);
 
 	void Deposit(double a);
 	bool Withdraw(double a);
 	void AddInterest();
 
-	void Print();
+	virtual void Print();
 
 	int GetNumOfObj();
 };

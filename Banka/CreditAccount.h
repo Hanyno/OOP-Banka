@@ -12,5 +12,6 @@ public:
 
 	bool CanWithdraw(double a);
 	bool Withdraw(double a);
+	void Print();
 };
 

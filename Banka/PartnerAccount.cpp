@@ -2,17 +2,19 @@
 #include "Account.h"
 
 #include <iostream>
+#include <string>
+
 
 PartnerAccount::PartnerAccount(int n, Client* o, Client* p) : Account(n, o)
 {
 	this->partner = p;
-	cout << "Kontruktor PAcc zavoln" << endl;
+	cout << "Kontruktor PAcc zavolan" << endl;
 }
 
 PartnerAccount::PartnerAccount(int n, Client* o, Client* p, double ir) : Account(n, o, ir)
 {
 	this->partner = p;
-	cout << "Kontruktor PAcc zavoln" << endl;
+	cout << "Kontruktor PAcc zavolan" << endl;
 }
 
 PartnerAccount::~PartnerAccount()
@@ -32,6 +34,5 @@ void PartnerAccount::Print()
 	cout << "Interest rate: " << this->GetInterestRate() << endl;
 	cout << "Owner: " << this->GetOwner()->GetName() << endl;
 	cout << "Partner: " << this->GetPartner()->GetName() << endl;
-	cout << "Account type: Partner Account" << endl;
 	cout << endl;
 }

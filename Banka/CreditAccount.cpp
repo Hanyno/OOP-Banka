@@ -1,5 +1,9 @@
 #include "CreditAccount.h"
 
+#include <iostream>
+#include <string>
+
+
 CreditAccount::CreditAccount(int n, Client* o, double c) : Account(n, o)
 {
 	this->credit = c;
@@ -24,4 +28,14 @@ bool CreditAccount::Withdraw(double a)
 		success = true;
 	}
 	return success;
+}
+
+void CreditAccount::Print()
+{
+	cout << "Number: " << this->GetNumber() << endl;
+	cout << "Balance: " << this->GetBalance() << endl;
+	cout << "Interest rate: " << this->GetInterestRate() << endl;
+	cout << "Owner: " << this->GetOwner()->GetName() << endl;
+	cout << "Credit: " << this->credit << endl;
+	cout << endl;
 }

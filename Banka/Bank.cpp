@@ -5,6 +5,8 @@
 #include "CreditAccount.h"
 
 #include <iostream>
+#include <string>
+
 
 double Bank::ir = 0.05;
 
@@ -69,12 +71,15 @@ Client* Bank::CreateClient(int c, string n)
 
 Account* Bank::CreateAccount(int n, Client* c)
 {
-	return CreateAccount(n, c, nullptr, 0.05);
+	return CreateAccount(n, c, 0.05);
 }
 
 Account* Bank::CreateAccount(int n, Client* c, double ir)
 {
-	return CreateAccount(n, c, nullptr, ir);
+	Account* newAccount = new Account(n, c, ir);
+	this->accounts[this->accountsCount] = newAccount;
+	this->accountsCount++;
+	return newAccount;
 }
 
 PartnerAccount* Bank::CreateAccount(int n, Client* c, Client* p)
@@ -104,7 +109,11 @@ void Bank::AddInterest()
 
 void Bank::Print()
 {
+	cout << "Number of clients: " << this->clients[0]->GetObjectCount() << endl;
+
 	cout << "Clients:" << endl;
+	cout << endl;
+
 	for (int i = 0; i < this->clientsCount; i++)
 	{
 		cout << "Code: " << this->clients[i]->GetCode() << "\t" << "Name: " << this->clients[i]->GetName() << endl;
@@ -112,22 +121,19 @@ void Bank::Print()
 
 	cout << endl;
 
+	cout << "Number of accounts: " << this->accounts[0]->GetNumOfObj() << endl;	
+	
 	cout << "Accounts:" << endl;
+	cout << endl;
 	for (int i = 0; i < this->accountsCount; i++)
 	{
 		this->accounts[i]->Print();
 	}
 }
 
-
-int Bank::GetAccountsCount()
+void Bank::ModifyIr(double new_ir)
 {
-	return this->accountsCount;
-}
-
-void Bank::ModifyIr(int new_ir)
-{
-	for (int i = 0; i < this->GetAccountsCount(); i++)
+	for (int i = 0; i < this->accounts[0]->GetNumOfObj(); i++)
 	{
 		if (this->GetAccount(i)->GetInterestRate() == this->ir)
 		{
@@ -135,4 +141,16 @@ void Bank::ModifyIr(int new_ir)
 		}
 	}
 	this->ir = new_ir;
+}
+
+CreditAccount* Bank::CreateAccount(int n, Client* c, double ir, double credit)
+{
+	if (this->accountsCount > this->maxAccounts)
+		return nullptr;
+
+	CreditAccount* newAccount = new CreditAccount(n, c, ir, credit);
+
+	this->accounts[this->accountsCount] = newAccount;
+	this->accountsCount++;
+	return newAccount;
 }
